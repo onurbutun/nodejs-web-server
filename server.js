@@ -1,4 +1,5 @@
 var express=require("express");//modül expor olduğu için function olarak kullanılabiliyor.
+var middleware=require("./middleware");
 var app=express(); //app'te artık express'in bir instance'ı var ama henüz çalışır duruma gelmedi.
 var PORT=3000;
 //2 şekilde middleware tanımlanır.1. application seviyesinde 2. route seviyesindedir.
@@ -8,16 +9,7 @@ var PORT=3000;
 //ya da log kullanılacak mı gibi işlemler için middleware kullanılır.
 //requireAuthentication: function(req,res,next){ burada next bir callback functiondır. Next çağrılırsa 
 //express tamam ben bu sayfada ileri gidebilirim diye hareket edecektir
-var middleware={
- requireAuthentication: function(req,res,next){
- console.log("Özel route girildi!!!");
- next();
- },
- logger: function(req,res,next){
-     console.log(req.method + " "+ req.originalUrl);//Hangi isteğin çağrıldığını gösterecek(get mi, post mu gibi)
-     next();
- }
-}
+
 
 //app.use(middleware.requireAuthentication,middleware.logger);//application seviyesinde kullanım.
 app.use(middleware.logger);
