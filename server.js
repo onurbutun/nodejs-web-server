@@ -1,7 +1,7 @@
 var express=require("express");//modül expor olduğu için function olarak kullanılabiliyor.
 var middleware=require("./middleware");
 var app=express(); //app'te artık express'in bir instance'ı var ama henüz çalışır duruma gelmedi.
-var PORT=3000;
+var PORT=process.env.PORT || 3000;
 //2 şekilde middleware tanımlanır.1. application seviyesinde 2. route seviyesindedir.
 //application seviyesinde tanımlanan middleware'ler her bir route'ta geçerli olur.
 //application seviyesinde middleware en tepede olmalıdır. Routeların üstünde olmalıdır.
